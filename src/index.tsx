@@ -3,6 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {registerMicroApps, start}  from 'qiankun';
+
+registerMicroApps([
+  {
+    name: 'reactApp',
+    entry: '//localhost:3000',
+    container: '#container',
+    activeRule: '/sub-app-react'
+  },
+  {
+    name: 'vueApp',
+    entry: '//localhost:3001',
+    container: '#container',
+    activeRule: '/sub-app-vue'
+  }
+]);
+
+start();
 
 ReactDOM.render(
   <React.StrictMode>
