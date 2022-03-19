@@ -18,7 +18,22 @@ function App() {
             <Link to="/about">About</Link>|
           </li>
           <li>
-            <Link to="/topics">Topics</Link>
+            <Link to="/sub-app-react/home">React-Sub-Home</Link>|
+          </li>
+          <li>
+            <Link to="/sub-app-react/about">React-Sub-About</Link>|
+          </li>
+          <li>
+            <Link to="/sub-app-vue/home">Vue-Sub-Home</Link>|
+          </li>
+          <li>
+            <Link to="/sub-app-vue/about">Vue-Sub-About</Link>|
+          </li>
+          <li>
+            <Link to="/sub-app-vue3/home">Vue3-Sub-Home</Link>|
+          </li>
+          <li>
+            <Link to="/sub-app-vue3/about">Vue3-Sub-About</Link>|
           </li>
         </ul>
         <img src={logo} className="App-logo" alt="logo" />
@@ -34,6 +49,7 @@ function App() {
           <Home/>
         </Route>
       </Switch>
+      <div id='container'></div>
     </Router>
   );
 }

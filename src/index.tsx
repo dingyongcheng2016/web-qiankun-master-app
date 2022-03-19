@@ -8,19 +8,29 @@ import {registerMicroApps, start}  from 'qiankun';
 registerMicroApps([
   {
     name: 'reactApp',
-    entry: '//localhost:3000',
+    entry: '//192.168.3.10:3001',
     container: '#container',
     activeRule: '/sub-app-react'
   },
   {
     name: 'vueApp',
-    entry: '//localhost:3001',
+    entry: '//192.168.3.10:8080',
     container: '#container',
     activeRule: '/sub-app-vue'
+  },
+  {
+    name: 'vue3App',
+    entry: '//192.168.3.10:8081',
+    container: '#container',
+    activeRule: '/sub-app-vue3'
   }
 ]);
 
-start();
+start({
+  sandbox: {
+    experimentalStyleIsolation: true
+  }
+});
 
 ReactDOM.render(
   <React.StrictMode>
