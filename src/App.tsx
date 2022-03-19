@@ -4,22 +4,24 @@ import './App.css';
 import Home from './pages/home';
 import About from './pages/about';
 import Topics from './pages/topics';
+import logo  from './logo.svg';
 
 function App() {
   return (
     <Router>
-      <div>
-        <ul>
+      <div className='App'>
+        <ul className='App-header'>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Home</Link>|
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/about">About</Link>|
           </li>
           <li>
             <Link to="/topics">Topics</Link>
           </li>
         </ul>
+        <img src={logo} className="App-logo" alt="logo" />
       </div>
       <Switch>
         <Route path="/about">
