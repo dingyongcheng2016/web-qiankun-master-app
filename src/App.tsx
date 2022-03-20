@@ -35,6 +35,9 @@ function App() {
           <li>
             <Link to="/sub-app-vue3/about">Vue3-Sub-About</Link>|
           </li>
+          <li>
+            <Link to="/purehtml">jquery-purehtml</Link>|
+          </li>
         </ul>
         <img src={logo} className="App-logo" alt="logo" />
       </div>

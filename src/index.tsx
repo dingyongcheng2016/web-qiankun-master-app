@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {registerMicroApps, setDefaultMountApp, runAfterFirstMounted, start}  from 'qiankun';
+import {registerMicroApps, setDefaultMountApp, initGlobalState, runAfterFirstMounted, start}  from 'qiankun';
 
 
 /**
@@ -23,30 +23,37 @@ import {registerMicroApps, setDefaultMountApp, runAfterFirstMounted, start}  fro
  * Step2 注册子应用
  */
 registerMicroApps([
-  {
-    name: 'reactApp',
-    entry: '//192.168.3.10:3001',
-    container: '#subapp-viewport',
-    loader,
-    activeRule: '/sub-app-react',
-    // props - object - 可选，主应用需要传递给微应用的数据。
-  },
-  {
-    name: 'vueApp',
-    entry: '//192.168.3.10:8080',
-    container: '#subapp-viewport',
-    loader,
-    activeRule: '/sub-app-vue',
-    // props - object - 可选，主应用需要传递给微应用的数据。
-  },
-  {
-    name: 'vue3App',
-    entry: '//192.168.3.10:8081',
-    container: '#subapp-viewport',
-    loader,
-    activeRule: '/sub-app-vue3',
-    // props - object - 可选，主应用需要传递给微应用的数据。
-    }
+    {
+      name: 'reactApp',
+      entry: '//192.168.3.10:3001',
+      container: '#subapp-viewport',
+      loader,
+      activeRule: '/sub-app-react',
+      // props - object - 可选，主应用需要传递给微应用的数据。
+    },
+    {
+      name: 'vueApp',
+      entry: '//192.168.3.10:8080',
+      container: '#subapp-viewport',
+      loader,
+      activeRule: '/sub-app-vue',
+      // props - object - 可选，主应用需要传递给微应用的数据。
+    },
+    {
+      name: 'vue3App',
+      entry: '//192.168.3.10:8081',
+      container: '#subapp-viewport',
+      loader,
+      activeRule: '/sub-app-vue3',
+      // props - object - 可选，主应用需要传递给微应用的数据。
+    },
+    {
+      name: 'purehtml',
+      entry: '//localhost:7104',
+      container: '#subapp-viewport',
+      loader,
+      activeRule: '/purehtml',
+    },
   ],
   // loader - (loading: boolean) => void - 可选，loading 状态发生变化时会调用的方法。
   {
@@ -59,6 +66,18 @@ registerMicroApps([
   },
 );
 
+const { onGlobalStateChange, setGlobalState } = initGlobalState({
+  user: 'qiankun',
+});
+
+onGlobalStateChange((value, prev) => console.log('[onGlobalStateChange - master]:', value, prev));
+
+setGlobalState({
+  ignore: 'master',
+  user: {
+    name: 'master',
+  },
+});
 
 /**
  * Step3 设置默认进入的子应用
