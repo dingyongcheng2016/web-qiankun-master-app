@@ -49,7 +49,6 @@ function App() {
           <Home/>
         </Route>
       </Switch>
-      <div id='container'></div>
     </Router>
   );
 }
